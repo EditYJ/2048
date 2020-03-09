@@ -17,7 +17,7 @@
         "__id__": 2
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [],
     "_prefab": null,
     "_opacity": 255,
@@ -171,7 +171,7 @@
       "array": [
         0,
         0,
-        520.4812676744476,
+        549.9144248693268,
         0,
         0,
         0,
@@ -638,6 +638,9 @@
       "__uuid__": "eae3c8a6-9a1b-40a5-a784-b992d5eb55c8"
     },
     "gap": 20,
+    "bg": {
+      "__id__": 5
+    },
     "_id": "515F5kkWBJapt6/LDvzbtl"
   }
 ]

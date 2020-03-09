@@ -30,14 +30,14 @@ cc.Class({
 
   drawBgBlocks() {
     this.blockList.forEach((rowArray, row) => {
-      rowArray.forEach((num, colum) => {
+      rowArray.forEach((item, colum) => {
         const block = this.makeBlock(this.blockSize)
         const x = this.getCenterPosition(colum)
         const y = this.getCenterPosition(row)
         const position = cc.v2(x, y)
         this.bg.addChild(block)
         block.setPosition(position)
-        block.getComponent('block').setNumber(num)
+        block.getComponent('block').setNumber(item)
         this.blockList[row][colum] = { position, block, num: 0 }
       })
     })
@@ -48,7 +48,7 @@ cc.Class({
     for (let i = 0; i < row; i++) {
       arr.push(
         [...new Array(colum).keys()].map(() => {
-          return null
+          return { num: 0 }
         })
       )
     }
@@ -69,5 +69,23 @@ cc.Class({
       (rowOrColum + 1) * this.gap +
       ((2 * (rowOrColum + 1) - 1) * this.blockSize) / 2
     )
+  },
+
+  // 找出空闲块
+  findEmptyBlock() {
+    const result = []
+    this.blockList.forEach((arr, row) => {
+      arr.forEach((item, colum) => {
+        if (!item.num && item.position && item.block) {
+          result.push({ row, colum })
+        }
+      })
+    })
+    return result
+  },
+
+  // 随机抽出空闲位置添加2/4的块
+  addRamdomBlock(){
+    const emptyBlockList = this.findEmptyBlock
   }
 })
